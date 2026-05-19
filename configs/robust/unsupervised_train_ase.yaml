@@ -1,0 +1,107 @@
+seed: 42
+use_wandb: true
+wandb:
+  project: #insert PROJECT NAME
+  entity: #insert PROJECT NAME
+run_name: robust_unsup_ase
+dataset: ase_object
+device: cuda
+
+checkpoints:
+  resume_from: checkpoints/robust_unsup/epoch_1000.pt
+  keep_epoch: false
+
+superflex:
+  extended: true
+  extended_non_zero_init: true
+  decoder:
+    n_queries: 16
+    n_layers: 3 # number of transformer decoders
+    n_heads: 1
+    masked_attention: false
+    swapped_attention: false
+    dim_feedforward: 512 # default
+    deep_supervision: False
+    pos_encoding_type: sinusoidal
+  point_encoder:
+    in_channels: 3
+    out_channels: 128
+    kernel_size: 3
+    resolution: 32
+    voxelization:
+      normalize: True
+      eps: 0
+    l1:
+      in_channels: 3
+      out_channels: 64
+      kernel_size: 3
+      resolution: 32
+      voxelization:
+        normalize: True
+        eps: 0
+    l2:
+      in_channels: 64
+      out_channels: 128
+      kernel_size: 3
+      resolution: 16
+      voxelization:
+        normalize: True
+        eps: 0
+    l3:
+      in_channels: 128
+      out_channels: 128
+      kernel_size: 3
+      resolution: 16
+      voxelization:
+        normalize: True
+        eps: 0  
+
+ase_object:
+  instances_path: /capstor/store/cscs/usi/u19/superflex/abo_partial/ase_instances_500
+  csv_path: /capstor/store/cscs/usi/u19/superflex/abo_partial/object_info.csv
+  abo_path: /capstor/scratch/cscs/gtaverni/data/ABO/processed-complete
+  split: train
+  normalize: true
+  gt_params_path: data/output_npz/abo/iou_tb/train.npz
+  filter:
+    metric: iou
+    threshold: 0.8
+
+trainer:
+  save_path: checkpoints
+  save_every_n_epochs: 100
+  num_epochs: 100
+  batch_size: 32
+  num_workers: 8
+  evaluate_every_n_epochs: 10
+  augmentations: True
+  occlusions: True 
+optimizer:
+  lr: 1e-4
+  weight_decay: 0 # default
+  betas: [0.9, 0.999] # default
+  enable_scheduler: True # True
+  only_heads: False
+  all_but_heads: False
+
+scheduler:  
+  _target_: torch.optim.lr_scheduler.OneCycleLR 
+  max_lr: ${optimizer.lr} 
+  epochs: ${trainer.num_epochs}
+  steps_per_epoch: -1
+
+loss:
+  type: iou
+  leaky_relu: 0.1
+  w_sps: 1.26
+  w_ext: 0.02
+  
+  # IoU
+  truncation: 0.05
+  w_sdf: 0.2
+  w_bbox: 0.0
+  w_iou: 0.2
+  w_overlap: 5.0
+  
+visualization:
+  res_primitives: 40

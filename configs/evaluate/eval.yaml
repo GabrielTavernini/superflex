@@ -1,0 +1,23 @@
+device: cuda
+
+optimization: false
+use_occlusion: false
+
+dataloader:
+  dataset: shapenet
+  batch_size: 256
+  num_workers: 4
+
+shapenet:
+  split: test
+  path: data/ShapeNet
+  categories: null
+  load_occupancy: true
+  use_fps: true
+
+abo:
+  split: test
+  path: /capstor/scratch/cscs/gtaverni/data/ABO/processed-complete
+  split_csv_path: /capstor/store/cscs/usi/u19/superflex/abo_partial/ase_object_split_test.csv
+  use_fps: true
+  load_occupancy: true

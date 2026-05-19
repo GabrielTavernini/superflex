@@ -1,0 +1,32 @@
+checkpoints_folder: checkpoints/superflex
+checkpoint_file: ckpt.pt
+output_dir: data/output_npz/shapenet
+config_file: config.yaml
+device: "cuda"
+dataset: shapenet
+dataloader:
+  split: test
+  batch_size: 128
+  num_workers: 4
+shapenet:
+  path: "data/ShapeNet"
+  normalize: false
+  categories: null
+scene:
+  path: data
+  name: scene_example
+  z_up: true
+  gt: true
+abo:
+  path: /capstor/scratch/cscs/gtaverni/data/ABO/processed-complete
+  split_csv_path: /capstor/store/cscs/usi/u19/superflex/abo_partial/ase_object_split_test.csv
+  normalize: true
+ase_object:
+  instances_path: /capstor/store/cscs/usi/u19/superflex/abo_partial/ase_instances_500
+  csv_path: /capstor/store/cscs/usi/u19/superflex/abo_partial/object_info.csv
+  abo_path: /capstor/scratch/cscs/gtaverni/data/ABO/processed-complete
+  split: test
+  normalize: true
+  gt_params_path: data/output_npz/abo/iou_tb/train.npz
+evaluation:
+  resolution: 50 

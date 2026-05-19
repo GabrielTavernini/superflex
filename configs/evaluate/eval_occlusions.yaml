@@ -1,0 +1,17 @@
+device: cuda
+
+optimization: false
+use_occlusion: true
+
+dataloader:
+  dataset: ase_object
+  batch_size: 256
+  num_workers: 4
+
+ase_object:
+  instances_path: /capstor/store/cscs/usi/u19/superflex/abo_partial/ase_instances_500
+  csv_path: /capstor/store/cscs/usi/u19/superflex/abo_partial/object_info.csv
+  abo_path: /capstor/scratch/cscs/gtaverni/data/ABO/processed-complete
+  split: test
+  normalize: false
+  gt_params_path: data/output_npz/abo/iou_tb/train.npz

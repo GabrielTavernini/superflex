@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "superflex"
+description = "SuperFlex"
+authors = [
+    { name = "Gabriel Tavernini" },
+    { name = "Elisabetta Fedele" },
+    { name = "Tiago Novello" },
+    { name = "Leonidas Guibas" },
+    { name = "Marc Pollefeys" },
+    { name = "Francis Engelmann" }
+]
+readme = "README.md"
+urls = {github = "https://github.com/elisabettafedele/superflex"}
+dynamic = ["version"]
+
+[tool.setuptools]
+packages = ["superflex"]
+
+[tool.setuptools.dynamic]
+version = {attr = "superflex.__version__"}

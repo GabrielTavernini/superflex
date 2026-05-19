@@ -1,0 +1,4 @@
+dataset: shapenet # or scene
+split: test # or train, val | scene ID for scenes
+npz_folder: data/output_npz/shapenet # path to the npz file
+resolution: 30 # resolution of the superquadrics
