@@ -15,8 +15,8 @@ def main():
     # Example Configuration / Model Outputs Configuration
     npz_path = "examples/table/predictions.npz" # "data/output_npz/superflex/shapenet_test.npz"
     ply_path = "examples/table/pointcloud.npz" # None
-    num_epochs = 1000
-    index = 0
+    max_iterations = 1000  # not sure about this, is it iterations?
+    index = 0  # index of ?
     
     # Load predictions
     pred_handler = PredictionHandler.from_npz(npz_path)
@@ -64,7 +64,7 @@ def main():
     )
     
     # Optimization loop
-    pbar = tqdm(range(num_epochs), desc="Fitting Superquadrics")
+    pbar = tqdm(range(max_iterations), desc="Fitting Superquadrics")
     best_loss = float('inf')
     best_params = None
     

@@ -30,19 +30,22 @@ class PointCloud:
 
 class PredictionHandler:
     def __init__(self, predictions: Dict[str, np.ndarray]):
+        # P : number of primitives
+        # N : number of points
+        # BS: batch size
         self.names = predictions['names']
-        self.pc = predictions['pc']                # [B, N, 3]
-        self.assign_matrix = predictions['assign_matrix']  # [B, N, P]
-        self.scale = predictions['scale']               # [B, P, 3]
-        self.rotation = predictions['rotation']         # [B, P, 3, 3]
-        self.translation = predictions['translation']    # [B, P, 3]
-        self.exponents = predictions['exponents']       # [B, P, 2]
-        self.exist = predictions['exist']               # [B, P]
-        self.colors = generate_ncolors(self.translation.shape[1])  # Generate colors for each object
+        self.pc = predictions['pc']                        # [BS, N, 3]
+        self.assign_matrix = predictions['assign_matrix']  # [BS, N, P]
+        self.scale = predictions['scale']                  # [BS, P, 3]
+        self.rotation = predictions['rotation']            # [BS, P, 3, 3]
+        self.translation = predictions['translation']      # [BS, P, 3]
+        self.exponents = predictions['exponents']          # [BS, P, 2]
+        self.exist = predictions['exist']                  # [BS, P]
+        self.colors = generate_ncolors(self.translation.shape[1])  # Generate colors for each primitive
 
-        # extension
-        self.tapering = predictions['tapering']
-        self.bending = predictions['bending']
+        # SuperFlex extension (bending and tapering)
+        self.tapering = predictions['tapering']            # [BS, P, 2]
+        self.bending = predictions['bending']              # [BS, P, 6] (kbz, alphaz, kbx, alphax, kby, alphay)
             
     def save_npz(self, filepath):
         """Save accumulated outputs to compressed npz file."""
