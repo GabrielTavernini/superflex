@@ -5,7 +5,7 @@ from omegaconf import OmegaConf
 from superflex.superflex import SuperFlex
 from superflex.utils.predictions_handler import PredictionHandler
 from superflex.data.dataloader import denormalize_outdict, denormalize_points
-import open3d as o3d
+import trimesh
 import viser
 from superflex.data.dataloader import normalize_points, denormalize_outdict
 from superflex.data.transform import rotate_around_axis
@@ -33,8 +33,8 @@ def main():
     model.load_state_dict(checkpoint['model_state_dict'])
     model.eval()
 
-    pc = o3d.io.read_point_cloud(path_to_point_cloud) 
-    points_tmp = np.asarray(pc.points)
+    pc = trimesh.load(path_to_point_cloud) 
+    points_tmp = np.asarray(pc.vertices)
     n_points = points_tmp.shape[0]  
 
     if n_points != 4096:  

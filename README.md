@@ -108,8 +108,8 @@ superflex/
 ├── data/                 # Dataset storage
 │   └── ShapeNet/         # ShapeNet dataset
 ├── examples/             # Inference example
-│   └── chair.ply         # ShapeNet chair
-│   └── table             # ShapeNet table
+│   └── chair.glb         # ABO chair mesh
+│   └── lamp.ply          # ShapeNet lamp pointcloud
 ├── scripts/              # Utility scripts
 ├── superflex/            # Main package
 ├── train/                # Training scripts
