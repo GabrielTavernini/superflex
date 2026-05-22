@@ -30,9 +30,9 @@ class PointCloud:
 
 class PredictionHandler:
     def __init__(self, predictions: Dict[str, np.ndarray]):
-        # P : number of primitives
-        # N : number of points
         # BS: batch size
+        # N : number of points
+        # P : number of primitives
         self.names = predictions['names']
         self.pc = predictions['pc']                        # [BS, N, 3]
         self.assign_matrix = predictions['assign_matrix']  # [BS, N, P]
@@ -44,7 +44,7 @@ class PredictionHandler:
         self.colors = generate_ncolors(self.translation.shape[1])  # Generate colors for each primitive
 
         # SuperFlex extension (bending and tapering)
-        self.tapering = predictions['tapering']            # [BS, P, 2]
+        self.tapering = predictions['tapering']            # [BS, P, 2] (kx, ky)
         self.bending = predictions['bending']              # [BS, P, 6] (kbz, alphaz, kbx, alphax, kby, alphay)
             
     def save_npz(self, filepath):
