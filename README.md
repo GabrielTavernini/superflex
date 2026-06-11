@@ -34,7 +34,7 @@
 Clone the repository and set up the environment:
 
 ```bash
-git clone https://github.com/gabrieltavernini/superflex.git
+git clone git@github.com:GabrielTavernini/superflex.git
 cd superflex
 
 # Create and activate virtual environment
