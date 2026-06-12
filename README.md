@@ -59,11 +59,12 @@ bash scripts/download_checkpoints.sh
 
 Alternatively, you can download the individual folders using the links below.
 
-| Dataset | Robust | Supervised | Link |
-|:--------|:-----------:|:-----:|:-----|
-| ShapeNet | ❌ | ❌ | [superflex](https://drive.google.com/drive/folders/1Ospu8mFz4kEQf5a6pnOOx87z-xWR6kQe?usp=sharing) |
-| ShapeNet + ASE | ✅ | ❌ |[robust unsup.](https://drive.google.com/drive/folders/1bw-HHwQYKC62uUHF9t8QVdx_XVibESQb?usp=sharing) |
-| ShapeNet + ASE | ✅ | ✅ |[robust](https://drive.google.com/drive/folders/1cHbtZLToQRontte6CyzvQpL5IHUqk-x4?usp=sharing) |
+| Dataset | Deformations | Robust | Supervised | Link |
+|:--------|:--------:|:-----------:|:-----:|:-----|
+| ShapeNet | ❌ | ❌ | ❌ | [base](https://drive.google.com/drive/folders/1yz4rwho0rsQGb5pEQcPIucZUjohOlfBN?usp=sharing) |
+| ShapeNet | ✅ | ❌ | ❌ | [superflex](https://drive.google.com/drive/folders/1Ospu8mFz4kEQf5a6pnOOx87z-xWR6kQe?usp=sharing) |
+| ShapeNet + ASE | ✅ | ✅ | ❌ |[robust unsup.](https://drive.google.com/drive/folders/1bw-HHwQYKC62uUHF9t8QVdx_XVibESQb?usp=sharing) |
+| ShapeNet + ASE | ✅ | ✅ | ✅ |[robust](https://drive.google.com/drive/folders/1cHbtZLToQRontte6CyzvQpL5IHUqk-x4?usp=sharing) |
 
 ### Inference Example
 Once downloaded the checkpoints you can run an inference example by doing:
