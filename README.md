@@ -13,7 +13,7 @@
 <sup>3</sup>IMPA
 <sup>4</sup>USI Lugano <br>
 </p>
-<h3 align="center"><a href="https://github.com/gabrieltavernini/superflex">Code</a> | <a href="#">Paper</a> | <a href="https://superflex3d.github.io">Project Page</a> </h3>
+<h3 align="center"><a href="https://github.com/gabrieltavernini/superflex">Code</a> | <a href="https://arxiv.org/abs/2607.01015">Paper</a> | <a href="https://superflex3d.github.io">Project Page</a> </h3>
 <div align="center"></div>
 </p>
 <p align="center"> 
