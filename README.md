@@ -1,7 +1,7 @@
 <p align="center">
  <h1 align="center">SuperFlex: Deformable Superquadrics for Point Cloud Decomposition</h2></h1>
 <p align="center">
-<a href="#">Gabriel Tavernini</a><sup>1*</sup>,
+<a href="https://gabrieltavernini.github.io/">Gabriel Tavernini</a><sup>1*</sup>,
 <a href="https://elisabettafedele.github.io/">Elisabetta Fedele</a><sup>1*</sup>,
 <a href="https://sites.google.com/site/tiagonovellodebrito">Tiago Novello</a><sup>2,3</sup>,
 <a href="https://geometry.stanford.edu/?member=guibas">Leonidas Guibas</a><sup>2</sup>,
