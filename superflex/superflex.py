@@ -67,15 +67,11 @@ class SuperFlex(nn.Module):
         point_features = self.point_encoder(x)
 
         refined_queries_list, assign_matrices = self.layers(self.init_queries, point_features)
-        outdict_list = []
 
-        # TODO remove this in the final version. there is no need to compute the output for all of them   
-        thred = 24
-        for i, q in enumerate(refined_queries_list): 
-            outdict_list += [self.heads(q[:,:-1,...])]
-            assign_matrix = assign_matrices[i]
-            assign_matrix = torch.softmax(assign_matrix, dim=2)
-            outdict_list[i]['assign_matrix'] = assign_matrix 
-            # outdict_list[i]['exist'] = (assign_matrix.sum(1) > thred).to(torch.float32).detach()[...,None]
-            
-        return outdict_list[-1]
+        output = refined_queries_list[-1]
+        assign_matrix = assign_matrices[-1]
+
+        outdict = self.heads(output[:, :-1, ...])
+        outdict['assign_matrix'] = torch.softmax(assign_matrix, dim=2)
+
+        return outdict
